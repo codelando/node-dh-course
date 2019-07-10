@@ -306,14 +306,15 @@ function get(url) {
 }
 
 function searchElementByText(html, text) {
-  return html.indexOf(text) > -1;
+  return html.includes(text);
 }
 
 // Error CORS
 // get('http://digitalhouse.com');
-get('http://localhost/curso-node/clase-1/ejercicios/digital-house.html')
-  .then(page => searchElementByText(page, "Co-learning"));
+  get('digital-house.html')
+  .then(page => return searchElementByText(page, "Co-learning"));
 
+console.log('Pendiente');
 
 // XPath
 // https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript
@@ -378,3 +379,12 @@ class Gritador extends Orador {
 }
 
 new Gritador("Dr. Bocagrande").hablar("¡hola!, ¿que tal?")
+
+
+// Notas y pendientes
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Brendan Eich (JS Creator)
+// Break the language into orthogonal primitives that work well together.
+
+// Investigar WEB ASM
