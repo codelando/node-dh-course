@@ -404,6 +404,54 @@
       </code></pre>
 
       <hr>
+      
+      <h2>Ejercicio 10</h2>
+      <p>Reescriba estos dos tipos de objetos para usar la palabra clave de clase, en lugar de la manipulación directa de prototipos. Orador es un tipo simple que expone un método de habla que, cuando se le llama, registra el texto dado junto con el nombre del orador. Gritador es un subtipo de Orador que grita su texto y lo convierte en mayúsculas.</p>
+      <pre><code class="javascript">
+        function Orador(nombre, verbo) {
+          this.nombre = nombre
+          this.verbo = verbo || "dice"
+        }
+        Orador.prototype.hablar = function(texto) {
+          console.log(this.nombre + " " + this.verbo + " '" + texto + "'")
+        }
+
+        function Gritador(nombre) {
+          Orador.llamar(this, nombre, "grita")
+        }
+        Gritador.prototype = Object.create(Orador.prototype)
+        Gritador.prototype.hablar = function(texto) {
+          Orador.prototype.hablar.llamar(this, texto.toUpperCase())
+        }
+
+        new Gritador("Dr. Bocagrande").hablar("hola, que tal?")
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+        class Orador {
+          constructor(nombre, verbo = "dice") {
+            this.nombre = nombre;
+            this.verbo = verbo;
+          }
+          hablar (texto) {
+            console.log(`${this.nombre} ${this.verbo} "${texto}"`);
+          }
+        }
+
+        class Gritador extends Orador {
+          constructor(nombre) {
+            super(nombre, "grita");
+          }
+
+          hablar (texto) {
+            console.log(`${this.nombre} ${this.verbo} "${texto.toUpperCase()}"`);
+          }
+        }
+
+        new Gritador("Dr. Bocagrande").hablar("¡hola!, ¿que tal?")
+      </code></pre>
+
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">

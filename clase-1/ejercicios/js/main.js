@@ -346,3 +346,35 @@ class Punto {
 }
 
 console.log(new Punto(1, 2).sumar(new Punto(2, 1)))
+
+
+// Ejercicio 10
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+consoleTitle('Ejercicio 10');
+
+// https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/Inheritance
+// https://javascript.info/class-inheritance
+
+class Orador {
+  constructor(nombre, verbo = "dice") {
+    this.nombre = nombre;
+    this.verbo = verbo;
+  }
+  hablar (texto) {
+    console.log(`${this.nombre} ${this.verbo} "${texto}"`);
+  }
+}
+
+
+class Gritador extends Orador {
+  constructor(nombre) {
+    super(nombre, "grita");
+  }
+
+  hablar (texto) {
+    console.log(`${this.nombre} ${this.verbo} "${texto.toUpperCase()}"`);
+  }
+}
+
+new Gritador("Dr. Bocagrande").hablar("¡hola!, ¿que tal?")
