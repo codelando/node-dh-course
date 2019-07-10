@@ -259,3 +259,25 @@ for (var {nombre: n, rol: r} of gente) {
 let mensaje = `Hay ${gente.length} miembros en el equipo de ${nombreEquipo}, sus nombres son ${nombres} ${cantAltoNivel} de ellos tienen un papel de alto nivel.`;
 
 console.log(mensaje)
+
+
+// Ejercicio 7
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// https://codeburst.io/javascript-es6-tagged-template-literals-a45c26e54761
+// https://wesbos.com/sanitize-html-es6-template-strings/
+
+consoleTitle('Ejercicio 7');
+
+// Claramente funciona, pero no me queda claro por qué.
+function html(strings, ...values) {
+  return strings.reduce((prev, next, i) => `${prev}${next}${escaparHTML(values[i] || '')}`, '');
+}
+
+const debeEscaparse = '<>&"'
+console.log(html`Deberías de escapar los ${debeEscaparse.length} caracteres: “${debeEscaparse}” en HTML`)
+
+function escaparHTML(string) {
+  return String(string).replace(/"/g, "&quot;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/&/g, "&amp;")
+}
