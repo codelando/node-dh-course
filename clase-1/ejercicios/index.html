@@ -341,6 +341,43 @@
 
       <hr>
       
+      <h2>Ejercicio 8</h2>
+      <p>En la página en el dominio https://digitalhouse.com/, esta contiene la palabra "Co-learning". Dada esta implementación de devolución de Promesa de una solicitud de obtención HTTP, escribir un "rastreador" simple basado en la promesa que primero obtenga la primera página. Escanear el contenido de esta página en busca de la palabra "Co-learning" y devolver la frase entera.</p>
+      <pre><code class="javascript">
+        function get(url) {
+          return new Promise((succeed, fail) => {
+            var req = new XMLHttpRequest()
+            req.open("GET", url, true)
+            req.addEventListener("load", () => {
+              if (req.status < 400)
+                succeed(req.responseText)
+              else
+                fail(new Error("Request failed: " + req.statusText))
+            })
+            req.addEventListener("error", () => {
+              fail(new Error("Network error"))
+            })
+            req.send(null)
+          })
+        }
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+
+      </code></pre>
+
+      <h3>Alternativa</h3>
+      <p>
+        Ejecutándose sobre la página actual en lugar de hacer un request.<br>
+        <a href="https://stackoverflow.com/a/29289196">Referencia: Stack Overflow.</a>
+      </p>
+      <pre><code class="javascript">
+        var xpath = "//p[contains(text(),'Co-learning')]";
+        var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      </code></pre>
+
+      <hr>      
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">

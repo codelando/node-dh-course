@@ -281,3 +281,48 @@ function escaparHTML(string) {
   return String(string).replace(/"/g, "&quot;").replace(/</g, "&lt;")
     .replace(/>/g, "&gt;").replace(/&/g, "&amp;")
 }
+
+
+// Ejercicio 8
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+consoleTitle('Ejercicio 8');
+
+function get(url) {
+  return new Promise((succeed, fail) => {
+    var req = new XMLHttpRequest()
+    req.open("GET", url, true)
+    req.addEventListener("load", () => {
+      if (req.status < 400)
+        succeed(req.responseText)
+      else
+        fail(new Error("Request failed: " + req.statusText))
+    })
+    req.addEventListener("error", () => {
+      fail(new Error("Network error"))
+    })
+    req.send(null)
+  })
+}
+
+function searchElementByText(html, text) {
+  return html.indexOf(text) > -1;
+}
+
+// Error CORS
+// get('http://digitalhouse.com');
+get('http://localhost/curso-node/clase-1/ejercicios/digital-house.html')
+  .then(page => searchElementByText(page, "Co-learning"));
+
+
+// XPath
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript
+// ---
+// La interfaz principal a usar con XPath es la función evaluate del objeto document.
+
+// El siguiente código permite buscar en la misma página usando el elemento
+// document. No funciona cuando se trae un html con la promesa de más arriba.
+
+// https://stackoverflow.com/a/29289196
+// var xpath = "//p[contains(text(),'Co-learning')]";
+// var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
