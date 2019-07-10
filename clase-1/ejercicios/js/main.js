@@ -326,3 +326,23 @@ get('http://localhost/curso-node/clase-1/ejercicios/digital-house.html')
 // https://stackoverflow.com/a/29289196
 // var xpath = "//p[contains(text(),'Co-learning')]";
 // var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+
+// Ejercicio 9
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Escribe una clase llamada Punto, que representa un punto en el espacio bidimensional. Un punto tiene propiedades x e y, dados como argumentos a su constructor. También tiene un solo método más, que toma otro punto y devuelve la suma de los dos puntos, es decir, un nuevo punto cuya x es la suma de las propiedades x de los dos puntos originales, y cuya y es la suma de sus y propiedades.
+
+consoleTitle('Ejercicio 9');
+
+class Punto {
+  constructor (posX, posY) {
+    this.posX = posX;
+    this.posY = posY;
+  }
+  sumar (punto) {
+    return new Punto(punto.posX + this.posX, punto.posX + this.posX);
+  }
+}
+
+console.log(new Punto(1, 2).sumar(new Punto(2, 1)))

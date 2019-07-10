@@ -340,7 +340,7 @@
       </code></pre>
 
       <hr>
-      
+
       <h2>Ejercicio 8</h2>
       <p>En la página en el dominio https://digitalhouse.com/, esta contiene la palabra "Co-learning". Dada esta implementación de devolución de Promesa de una solicitud de obtención HTTP, escribir un "rastreador" simple basado en la promesa que primero obtenga la primera página. Escanear el contenido de esta página en busca de la palabra "Co-learning" y devolver la frase entera.</p>
       <pre><code class="javascript">
@@ -377,7 +377,33 @@
         var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
       </code></pre>
 
-      <hr>      
+      <hr>
+
+      <h2>Ejercicio 9</h2>
+      <p>Escribe una clase llamada Punto, que representa un punto en el espacio bidimensional. Un punto tiene propiedades x e y, dados como argumentos a su constructor. También tiene un solo método más, que toma otro punto y devuelve la suma de los dos puntos, es decir, un nuevo punto cuya x es la suma de las propiedades x de los dos puntos originales, y cuya y es la suma de sus y propiedades.</p>
+      <pre><code class="javascript">
+        // Tu código acá
+
+        console.log(new Punto(1, 2).sumar(new Punto(2, 1)))
+        // → Punto{x: 3, y: 3}
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+        class Punto {
+          constructor (posX, posY) {
+            this.posX = posX;
+            this.posY = posY;
+          }
+          sumar (punto) {
+            return new Punto(punto.posX + this.posX, punto.posX + this.posX);
+          }
+        }
+
+        console.log(new Punto(1, 2).sumar(new Punto(2, 1)))
+      </code></pre>
+
+      <hr>
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">
