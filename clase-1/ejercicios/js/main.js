@@ -115,3 +115,32 @@ ordered.orderedPush(4);
 ordered.orderedPush(3);
 ordered.orderedPush(8);
 console.log("array:", ordered.content);
+
+// Ejercicio 3
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+consoleTitle('Ejercicio 3');
+
+// Los parámetros se declaran como "variables" en el orden en el que están en la
+// función, eso quiere decir que si queremos acceder a un parámetro "a" desde otro
+// parámetro "b", "a" debe declararse antes que "b".
+
+function ultimoIndiceDe(arr, elt, inicio = arr.length - 1) {
+  for (let i = inicio; i >= 0; i--)
+    if (arr[i] === elt) return i
+  return -1
+}
+
+console.log(ultimoIndiceDe([1, 2, 1, 2], 2))
+
+// arr.lastIndexOf(searchElement[, fromIndex])
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/lastIndexOf
+// ---
+// El método lastIndexOf() devuelve el último índice en el que un cierto
+// elemento puede encontrarse en el arreglo, ó -1 si el elemento no se encontrara.
+// El arreglo es recorrido en sentido contrario, empezando por el índice fromIndex.
+// ---
+// arr.lastIndexOf(searchElement, fromIndex)
+
+
+console.log([1, 2, 1, 2].lastIndexOf(2));

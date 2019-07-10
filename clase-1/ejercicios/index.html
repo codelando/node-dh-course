@@ -125,7 +125,36 @@
     </code></pre>
 
     <hr>
-    
+
+    <h2>Ejercicio 3</h2>
+    <p>Sería bueno poder llamar a nuestra función ultimoIndiceDe sin proporcionar el tercer argumento, y tenerlo por defecto para comenzar al final del array. Sería aún mejor si pudiéramos expresar esto con un valor de argumento predeterminado de ES6. ¿Podemos? ¿En qué ámbito se evalúan los argumentos por defecto? (Experimente para averiguarlo).</p>
+
+    <pre><code class="javascript">
+      function ultimoIndiceDe(arr, elt, inicio) {
+        for (let i = inicio - 1; i >= 0; i--)
+          if (arr[i] === elt) return i
+        return -1
+      }
+
+      console.log(ultimoIndiceDe([1, 2, 1, 2], 2))
+    </code></pre>
+
+    <h3>Resuelto</h3>
+    <pre><code class="javascript">
+      function ultimoIndiceDe(arr, elt, inicio = arr.length - 1) {
+        for (let i = inicio; i >= 0; i--)
+          if (arr[i] === elt) return i
+        return -1
+      }
+      console.log(ultimoIndiceDe([1, 2, 1, 2], 2))
+    </code></pre>
+
+    <h3>Alternativa</h3>
+    <pre><code class="javascript">
+      console.log([1, 2, 1, 2].lastIndexOf(2));
+    </code></pre>
+    <hr>
+
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">
