@@ -10,6 +10,7 @@ function consoleTitle(title) {
   );
 };
 
+
 // Ejercicio 1
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,6 +27,7 @@ const inventario = [
 let valorTotalMaquina = inventario.filter(item => item.tipo == "maquina").reduce((total, item) => total + item.valor, 0);
 
 console.log(valorTotalMaquina);
+
 
 // Ejercicio 2
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,7 +93,6 @@ console.log("array:", ordenado.contenido);
 // ---
 // El método sort() ordena los elementos de un array localmente y devuelve el array ordenado.
 
-
 class orderedArray {
   constructor(compare) {
     this.compare = compare;
@@ -115,6 +116,7 @@ ordered.orderedPush(4);
 ordered.orderedPush(3);
 ordered.orderedPush(8);
 console.log("array:", ordered.content);
+
 
 // Ejercicio 3
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,5 +144,33 @@ console.log(ultimoIndiceDe([1, 2, 1, 2], 2))
 // ---
 // arr.lastIndexOf(searchElement, fromIndex)
 
-
 console.log([1, 2, 1, 2].lastIndexOf(2));
+
+
+// Ejercicio 4
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+consoleTitle('Ejercicio 4');
+
+// arr.find(callback[, thisArg])
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find
+// ---
+// El método find() devuelve el valor del primer elemento del array que cumple
+// la función de prueba proporcionada. En cualquier otro caso se devuelve undefined.
+
+function detectarColision(objetos, punto) {
+  return objetos.find(
+    objeto => punto.x >= objeto.x 
+      && punto.x <= objeto.x + objeto.ancho 
+      && punto.y >= objeto.y 
+      && punto.y <= objeto.y + objeto.alto);
+}
+
+const misObjetos = [
+  {x:  10, y: 20, ancho: 30, alto: 30},
+  {x: -40, y: 20, ancho: 30, alto: 30},
+  {x:   0, y:  0, ancho: 10, alto:  5}
+]
+
+console.log(detectarColision(misObjetos, {x: 4, y: 2}))
+

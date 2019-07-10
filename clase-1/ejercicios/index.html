@@ -153,8 +153,48 @@
     <pre><code class="javascript">
       console.log([1, 2, 1, 2].lastIndexOf(2));
     </code></pre>
-    <hr>
 
+    <hr>
+    
+    <h2>Ejercicio 4</h2>
+    <p>La función detectarColision busca en un array de rectángulos y devuelve el primer rectángulo en el que se encuentra el punto dado. Use la desestructuración y una función de orden superior para hacer que este código sea más limpio. Es posible que desee utilizar el método de array find, que toma una función como argumento y devuelve el primer elemento del array (el elemento, no su índice) para el que la función devuelve verdadero.</p>
+
+    <pre><code class="javascript">
+      function detectarColision(objetos, punto) {
+          for (let i = 0; i < objetos.length; i++) {
+            let objeto = objetos[i]
+            if (punto.x >= objeto.x && punto.x <= objeto.x + objeto.width &&
+                punto.y >= objeto.y && punto.y <= objeto.y + objeto.alto)
+              return objeto
+          }
+        }
+
+        const misObjetos = [
+          {x:  10, y: 20, ancho: 30, alto: 30},
+          {x: -40, y: 20, ancho: 30, alto: 30},
+          {x:   0, y:  0, ancho: 10, alto:  5}
+        ]
+
+        console.log(detectarColision(misObjetos, {x: 4, y: 2}))
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+        function detectarColision(objetos, punto) {
+          return objetos.find(objeto => punto.x >= objeto.x && punto.x <= objeto.x + objeto.ancho &&
+            punto.y >= objeto.y && punto.y <= objeto.y + objeto.alto);
+        }
+
+        const misObjetos = [
+          {x:  10, y: 20, ancho: 30, alto: 30},
+          {x: -40, y: 20, ancho: 30, alto: 30},
+          {x:   0, y:  0, ancho: 10, alto:  5}
+        ]
+
+        console.log(detectarColision(misObjetos, {x: 4, y: 2}))
+      </code></pre>
+
+      <hr>
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">
