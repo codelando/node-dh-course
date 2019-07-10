@@ -170,7 +170,65 @@ const misObjetos = [
   {x:  10, y: 20, ancho: 30, alto: 30},
   {x: -40, y: 20, ancho: 30, alto: 30},
   {x:   0, y:  0, ancho: 10, alto:  5}
-]
+];
 
-console.log(detectarColision(misObjetos, {x: 4, y: 2}))
+console.log(detectarColision(misObjetos, {x: 4, y: 2}));
+
+
+// Ejercicio 5
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+consoleTitle('Ejercicio 5');
+
+// array.splice
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/splice
+// ---
+// Sirve para reemplazar o agregar valores en un array pudiendo definir punto de
+// inicio y finalización para definir el segmento afectado.
+
+// array.concat
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/concat
+// ---
+// Sirve para unir arrays, devolverá un nuevo array sin modificar los originales
+
+// apply
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Function/apply
+// El método apply() invoca una determinada función asignando explícitamente el
+// objeto this y un array o similar (array like object) como parámetros (argumentos)
+// para dicha función.
+
+// call
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Function/call
+// ---
+// El método call() llama a una función con un valor this asignado y argumentos
+// provistos de forma individual.
+
+// En el código de más abajo se usar para tomar el argumento con índice 1 pasado a la función.
+
+// let pajarosVistos = []
+// function grabarPajaros(tiempo) {
+//   pajarosVistos.push({tiempo, pajaros: Array.prototype.slice.call(arguments, 1)})
+// }
+
+function remplazar(array, desde, hasta, elementos) {
+  array.splice(desde, hasta - desde, ...elementos);
+}
+
+let testArray = [1, 2, 100, 100, 6];
+remplazar(testArray, 2, 4, [3, 4, 5]);
+console.log(testArray);
+
+function copiarYRemplazar(array, desde, hasta, elementos) {
+  return [...array.slice(0, desde), ...elementos, ...array.slice(hasta)];
+}
+
+console.log(copiarYRemplazar([1, 2, 100, 200, 6], 2, 4, [3, 4, 5]))
+
+let pajarosVistos = [];
+function grabarPajaros(tiempo, ...pajaros) {
+  pajarosVistos.push({tiempo, pajaros: pajaros});
+}
+
+grabarPajaros(new Date, "sparrow", "robin", "pterodactyl");
+console.log(pajarosVistos);
 

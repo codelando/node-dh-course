@@ -155,7 +155,7 @@
     </code></pre>
 
     <hr>
-    
+
     <h2>Ejercicio 4</h2>
     <p>La función detectarColision busca en un array de rectángulos y devuelve el primer rectángulo en el que se encuentra el punto dado. Use la desestructuración y una función de orden superior para hacer que este código sea más limpio. Es posible que desee utilizar el método de array find, que toma una función como argumento y devuelve el primer elemento del array (el elemento, no su índice) para el que la función devuelve verdadero.</p>
 
@@ -195,6 +195,62 @@
       </code></pre>
 
       <hr>
+
+      <h2>Ejercicio 5</h2>
+      <p>Simplifique estas tres funciones utilizando la sintaxis de spread. El primero, remplazar, reemplaza parte de un array con elementos de otro array. El segundo, copiarYRemplazar, hace lo mismo, pero crea un nuevo array en lugar de modificar su argumento. El tercero se utiliza para registrar los avistamientos de un observador de aves. Primero toma una marca de tiempo (por ejemplo, una fecha) y luego cualquier número de cadenas que nombren pájaros. A continuación, almacena estos en el array pajarosVistos.</p>
+
+      <pre><code class="javascript">
+        function remplazar(array, desde, hasta, elementos) {
+          array.splice.apply(array, [desde, hasta - desde].concat(elementos))
+        }
+
+        let testArray = [1, 2, 100, 100, 6]
+        remplazar(testArray, 2, 4, [3, 4, 5])
+        console.log(testArray)
+
+        function copiarYRemplazar(array, desde, hasta, elementos) {
+          return array.slice(0, desde).concat(elementos).concat(array.slice(hasta))
+        }
+
+        console.log(copiarYRemplazar([1, 2, 100, 200, 6], 2, 4, [3, 4, 5]))
+
+        let pajarosVistos = []
+        function grabarPajaros(tiempo) {
+          pajarosVistos.push({tiempo, pajaros: Array.prototype.slice.call(arguments, 1)})
+        }
+
+        grabarPajaros(new Date, "sparrow", "robin", "pterodactyl")
+        console.log(pajarosVistos)
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+        function remplazar(array, desde, hasta, elementos) {
+          array.splice(desde, hasta - desde, ...elementos);
+        }
+
+        let testArray = [1, 2, 100, 100, 6]
+        remplazar(testArray, 2, 4, [3, 4, 5])
+        console.log(testArray)
+
+        function copiarYRemplazar(array, desde, hasta, elementos) {
+          return [...array.slice(0, desde), ...elementos, ...array.slice(hasta)];
+        }
+
+        console.log(copiarYRemplazar([1, 2, 100, 200, 6], 2, 4, [3, 4, 5]))
+
+        let pajarosVistos = []
+        function grabarPajaros(tiempo, ...pajaros) {
+          pajarosVistos.push({tiempo, pajaros: pajaros})
+        }
+
+        grabarPajaros(new Date, "sparrow", "robin", "pterodactyl")
+        console.log(pajarosVistos)
+
+      </code></pre>
+
+      <hr>
+
 </div>
 
 <link rel="stylesheet" href="css/atom-one-dark-reasonable.css">
