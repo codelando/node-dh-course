@@ -232,3 +232,30 @@ function grabarPajaros(tiempo, ...pajaros) {
 grabarPajaros(new Date, "sparrow", "robin", "pterodactyl");
 console.log(pajarosVistos);
 
+
+// Ejercicio 6
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Destructuración en objetos
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Destructuring_assignment#For_para_iteraciones_con_destructuring
+
+consoleTitle('Ejercicio 6');
+
+const nombreEquipo = "tooling";
+const gente = [
+  {nombre: "Sofía", rol: "senior"},
+  {nombre: "Ricky", rol: "junior"},
+  {nombre: "Martin", rol: "senior"},
+  {nombre: "Gonzalo", rol: "junior"}
+];
+
+let nombres = '';
+let cantAltoNivel = 0;
+for (var {nombre: n, rol: r} of gente) {
+  nombres += `${n}, `;
+  r == "senior" && cantAltoNivel++;
+}
+
+let mensaje = `Hay ${gente.length} miembros en el equipo de ${nombreEquipo}, sus nombres son ${nombres} ${cantAltoNivel} de ellos tienen un papel de alto nivel.`;
+
+console.log(mensaje)

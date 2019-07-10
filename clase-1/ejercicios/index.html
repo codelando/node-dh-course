@@ -250,6 +250,55 @@
       </code></pre>
 
       <hr>
+      
+      <h2>Ejercicio 6</h2>
+      <p>
+        Dados los datos en el código de inicio, use los templates strings para producir la siguiente cadena. Asegúrese de que los números, los nombres y el nombre del equipo realmente provengan de los datos.
+
+        <ul>
+          <li>Hay 4 personas en el equipo de herramientas.</li>
+          <li>Sus nombres son Sofía, Ricky, Martin, Gonzalo.</li>
+          <li>2 de ellos tienen un papel de alto nivel.</li>
+        </ul>
+      </p>
+
+      <pre><code class="javascript">
+        const nombreEquipo = "tooling"
+        const gente = [{nombre: "Sofía", rol: "senior"},
+                        {nombre: "Ricky", rol: "junior"},
+                        {nombre: "Martin", rol: "senior"},
+                        {nombre: "Gonzalo", rol: "junior"}]
+
+        let mensaje = TU_CODIGO_AQUI
+
+        console.log(mensaje)
+      </code></pre>
+
+      <h3>Resuelto</h3>
+      <pre><code class="javascript">
+        consoleTitle('Ejercicio 6');
+
+        const nombreEquipo = "tooling";
+        const gente = [
+          {nombre: "Sofía", rol: "senior"},
+          {nombre: "Ricky", rol: "junior"},
+          {nombre: "Martin", rol: "senior"},
+          {nombre: "Gonzalo", rol: "junior"}
+        ];
+
+        let nombres = '';
+        let cantAltoNivel = 0;
+        for (var {nombre: n, rol: r} of gente) {
+          nombres += `${n}, `;
+          r == "senior" && cantAltoNivel++;
+        }
+
+        let mensaje = `Hay ${gente.length} miembros en el equipo de ${nombreEquipo}, sus nombres son ${nombres} ${cantAltoNivel} de ellos tienen un papel de alto nivel.`;
+
+        console.log(mensaje)
+      </code></pre>
+
+      <hr>
 
 </div>
 
