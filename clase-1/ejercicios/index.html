@@ -44,6 +44,87 @@
     </code></pre>
 
     <hr>
+
+    <h2>Ejercicio 2</h2>
+    <p>El código para este ejercicio implementa un wrapper para trabajar con arrays ordenados. Su constructor toma una función de comparación que compara dos elementos y devuelve un número, negativo si el primero es menor que el segundo, cero cuando son iguales, y positivo de lo contrario. Reescriba el código para usar una clase ES6. Luego, reescriba el loop para usar el métodos de array de ES6 findIndex, que es como indexOf, pero toma una función en lugar de un elemento como argumento, y devuelve el índice del primer elemento para el cual esa función devuelve verdadero (o devuelve -1 si no hay) tal elemento fue encontrado). Por ejemplo, [1, 2, 3].findIndex (x => x > 1) produce 1. Use las arrow functions para todas las expresiones de función.</p>
+
+    <pre><code class="javascript">
+      function ArrayOrdenado(comparar) {
+        this.comparar = comparar;
+        this.contenido = [];
+      }
+      ArrayOrdenado.prototype.encontrarPos = function(elt) {
+        for (var i = 0; i < this.contenido.length; i++) {
+          if (this.comparar(elt, this.contenido[i]) < 0) break;
+        }
+        return i;
+      }
+      ArrayOrdenado.prototype.insertar = function(elt) {
+        this.contenido.splice(this.encontrarPos(elt), 0, elt);
+      }
+
+      var ordenado = new ArrayOrdenado(function(a, b) { return a - b });
+      ordenado.insertar(5);
+      ordenado.insertar(1);
+      ordenado.insertar(2);
+      ordenado.insertar(4);
+      ordenado.insertar(3);
+      console.log("array:", ordenado.contenido);
+    </code></pre>
+
+    <h3>Resuelto</h3>
+    <pre><code class="javascript">
+      class ArrayOrdenado {
+        constructor(comparar) {
+          this.contenido = [];
+          this.comparar = comparar;
+        }
+        // Encuentra la posición donde debería ir un determinado elemento según el orden.
+        encontrarPos(elem) {
+          for (var i = 0; i < this.contenido.length; i++) {
+            if (this.comparar(elem, this.contenido[i]) < 0) break;
+          }
+          return i;
+        }
+        // inserta el elemento en la posición correspondiente según el orden.
+        insertar(elem) {
+          this.contenido.splice(this.encontrarPos(elem), 0, elem);
+        }
+      }
+
+      var ordenado = new ArrayOrdenado((a, b) => a - b );
+      ordenado.insertar(5);
+      ordenado.insertar(1);
+      ordenado.insertar(2);
+      ordenado.insertar(4);
+      ordenado.insertar(3);
+      console.log("array:", ordenado.contenido);
+    </code></pre>
+
+    <h3>Alternativa</h3>
+    <pre><code class="javascript">
+      class orderedArray {
+        constructor(compare) {
+          this.compare = compare;
+          this.content = [];
+        }
+        orderedPush(element) {
+          this.content.push(element);
+          this.content.sort(this.compare);
+
+        }
+      }
+
+      var ordered = new orderedArray((a, b) => a - b );
+      ordered.orderedPush(5);
+      ordered.orderedPush(1);
+      ordered.orderedPush(2);
+      ordered.orderedPush(4);
+      ordered.orderedPush(3);
+      console.log("array:", ordered.content);
+    </code></pre>
+
+    <hr>
     
 </div>
 
